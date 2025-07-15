@@ -1,0 +1,84 @@
+server:
+  port: ${DAHE_SERVER_PORT:3100}
+  forward-headers-strategy: framework
+  ssl:
+    enabled: ${DAHE_SSL_ENABLED:false}
+    key-store: "${DAHE_SSL_KEYSTORE:}"
+    key-store-password: "${DAHE_SSL_KEYSTORE_PASSWORD:}"
+    key-store-type: "${DAHE_SSL_KEYSTORE_TYPE:JKS}"
+
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: "${DAHE_DB_URL:jdbc:mysql://127.0.0.1:3306/dahe_v2?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai}"
+      username: "${DAHE_DB_USERNAME:root}"
+      password: "${DAHE_DB_PASSWORD:}"
+  redis:
+    host: "${DAHE_REDIS_HOST:127.0.0.1}"
+    port: ${DAHE_REDIS_PORT:6379}
+    password: "${DAHE_REDIS_PASSWORD:}"
+    database: ${DAHE_REDIS_DB:0}
+    timeout: "${DAHE_REDIS_TIMEOUT:2000ms}"
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+  servlet:
+    multipart:
+      max-file-size: 128MB
+      max-request-size: 128MB
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+knife4j:
+  enable: true
+
+app:
+  cors:
+    allowed-origin-patterns: "${DAHE_CORS_ALLOWED_ORIGIN_PATTERNS:https://www.daheseeds.com,https://daheseeds.com,http://localhost:*,http://127.0.0.1:*}"
+  auth:
+    miniapp-login-scenes: field_record,seed_test,asset_upload,trace_query,task_center
+    allow-mock-open-id-fallback: false
+    admin-open-id-detection-prefixes:
+      - mock_admin_
+      - mock_supervisor_
+      - admin_
+    admin-open-id-generate-prefix: admin_
+    wechat:
+      enabled: ${DAHE_WECHAT_ENABLED:true}
+      app-id: "${DAHE_WECHAT_APP_ID:}"
+      app-secret: "${DAHE_WECHAT_APP_SECRET:}"
+      code2session-url: "${DAHE_WECHAT_CODE2SESSION_URL:https://api.weixin.qq.com/sns/jscode2session}"
+      access-token-url: "${DAHE_WECHAT_ACCESS_TOKEN_URL:https://api.weixin.qq.com/cgi-bin/token}"
+      wxacode-url: "${DAHE_WECHAT_WXACODE_URL:https://api.weixin.qq.com/wxa/getwxacodeunlimit}"
+    miniapp-share:
+      title: "${DAHE_MINIAPP_SHARE_TITLE:大禾种业}"
+      path: "${DAHE_MINIAPP_SHARE_PATH:/pages/auth/login?entry=share}"
+      image-url: "${DAHE_MINIAPP_SHARE_IMAGE_URL:/static/images/farm.png}"
+      qr-page: "${DAHE_MINIAPP_SHARE_QR_PAGE:pages/auth/login}"
+      qr-scene: "${DAHE_MINIAPP_SHARE_QR_SCENE:entry=share}"
+  session:
+    redis-enabled: ${DAHE_SESSION_REDIS_ENABLED:true}
+    redis-key-prefix: "${DAHE_SESSION_REDIS_KEY_PREFIX:dahe:v2:session:}"
+    redis-failure-bypass-seconds: ${DAHE_SESSION_REDIS_FAILURE_BYPASS_SECONDS:60}
+  upload:
+    dir: "${DAHE_UPLOAD_DIR:uploads}"
+    public-path-prefix: "${DAHE_UPLOAD_PUBLIC_PATH_PREFIX:/uploads}"
+  amap:
+    cache:
+      redis-enabled: ${DAHE_AMAP_CACHE_REDIS_ENABLED:true}
+      redis-key-prefix: "${DAHE_AMAP_CACHE_REDIS_KEY_PREFIX:dahe:v2:amap:cache:}"
+      region-ttl-minutes: ${DAHE_AMAP_REGION_TTL_MINUTES:720}
+      region-stale-minutes: ${DAHE_AMAP_REGION_STALE_TTL_MINUTES:1440}
+      weather-ttl-minutes: ${DAHE_AMAP_WEATHER_TTL_MINUTES:60}
+      local-region-max-entries: ${DAHE_AMAP_LOCAL_REGION_MAX_ENTRIES:128}
+      local-weather-max-entries: ${DAHE_AMAP_LOCAL_WEATHER_MAX_ENTRIES:64}

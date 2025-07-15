@@ -1,0 +1,11 @@
+target/
+.idea/
+.m2repo/
+tmp/
+uploads/
+.vscode/
+*.log
+logs/
+.DS_Store
+Thumbs.db
+

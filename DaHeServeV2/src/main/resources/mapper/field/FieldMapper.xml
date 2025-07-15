@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dahe.v2.modules.field.mapper.FieldMapper">
+
+    <sql id="FieldBaseColumns">
+        f.id,
+        f.name,
+        f.area_mu,
+        f.crop_type,
+        f.crop_variety,
+        f.crop_variety_groups_json,
+        f.province,
+        f.city,
+        f.district,
+        f.township,
+        f.formatted_address,
+        f.status,
+        f.enabled,
+        f.location_lat,
+        f.location_lng,
+        f.location_desc,
+        f.cover_image_url,
+        f.remark,
+        f.sort_order,
+        f.deleted,
+        f.created_at,
+        f.updated_at
+    </sql>
+
+    <sql id="FieldQueryWhere">
+        <where>
+            f.deleted = 0
+            <if test="query.enabled != null">
+                AND f.enabled = #{query.enabled}
+            </if>
+            <if test="query.enabled == null and !query.includeDisabled">
+                AND f.enabled = 1
+            </if>
+            <if test="query.keyword != null and query.keyword != ''">
+                AND (
+                    f.name LIKE CONCAT('%', #{query.keyword}, '%')
+                    OR f.formatted_address LIKE CONCAT('%', #{query.keyword}, '%')
+                    OR f.location_desc LIKE CONCAT('%', #{query.keyword}, '%')
+                    OR f.province LIKE CONCAT('%', #{query.keyword}, '%')
+                    OR f.city LIKE CONCAT('%', #{query.keyword}, '%')
+                    OR f.district LIKE CONCAT('%', #{query.keyword}, '%')
+                    OR f.township LIKE CONCAT('%', #{query.keyword}, '%')
+                    OR f.crop_type LIKE CONCAT('%', #{query.keyword}, '%')
+                    OR f.crop_variety LIKE CONCAT('%', #{query.keyword}, '%')
+                    OR f.crop_variety_groups_json LIKE CONCAT('%', #{query.keyword}, '%')
+                    OR EXISTS (
+                        SELECT 1
+                        FROM field_crop_cycle c
+                        WHERE c.field_id = f.id
+                          AND c.deleted = 0
+                          AND c.status = 'active'
+                          AND c.crops_json LIKE CONCAT('%', #{query.keyword}, '%')
+                    )
+                )
+            </if>
+            <if test="query.status != null and query.status != ''">
+                AND f.status = #{query.status}
+            </if>
+            <if test="query.cropType != null and query.cropType != ''">
+                AND (
+                    f.crop_type = #{query.cropType}
+                    <if test="query.cropTypeJsonToken != null and query.cropTypeJsonToken != ''">
+                        OR f.crop_variety_groups_json LIKE CONCAT('%', #{query.cropTypeJsonToken}, '%')
+                    </if>
+                    <if test="query.cycleCropTypeJsonToken != null and query.cycleCropTypeJsonToken != ''">
+                        OR EXISTS (
+                            SELECT 1
+                            FROM field_crop_cycle c
+                            WHERE c.field_id = f.id
+                              AND c.deleted = 0
+                              AND c.status = 'active'
+                              AND c.crops_json LIKE CONCAT('%', #{query.cycleCropTypeJsonToken}, '%')
+                        )
+                    </if>
+                )
+            </if>
+            <if test="query.province != null and query.province != ''">
+                AND f.province LIKE CONCAT('%', #{query.province}, '%')
+            </if>
+            <if test="query.city != null and query.city != ''">
+                AND f.city LIKE CONCAT('%', #{query.city}, '%')
+            </if>
+            <if test="query.district != null and query.district != ''">
+                AND f.district LIKE CONCAT('%', #{query.district}, '%')
+            </if>
+            <if test="query.township != null and query.township != ''">
+                AND f.township LIKE CONCAT('%', #{query.township}, '%')
+            </if>
+            <if test="query.cropVariety != null and query.cropVariety != ''">
+                AND (
+                    f.crop_variety LIKE CONCAT('%', #{query.cropVariety}, '%')
+                    <if test="query.cropVarietyJsonToken != null and query.cropVarietyJsonToken != ''">
+                        OR f.crop_variety_groups_json LIKE CONCAT('%', #{query.cropVarietyJsonToken}, '%')
+                    </if>
+                    <if test="query.cycleCropVarietyJsonToken != null and query.cycleCropVarietyJsonToken != ''">
+                        OR EXISTS (
+                            SELECT 1
+                            FROM field_crop_cycle c
+                            WHERE c.field_id = f.id
+                              AND c.deleted = 0
+                              AND c.status = 'active'
+                              AND c.crops_json LIKE CONCAT('%', #{query.cycleCropVarietyJsonToken}, '%')
+                        )
+                    </if>
+                )
+            </if>
+            <if test="query.sortBy == 'distance' and query.latitude != null and query.longitude != null">
+                AND f.location_point IS NOT NULL
+                AND f.location_lat BETWEEN -90 AND 90
+                AND f.location_lng BETWEEN -180 AND 180
+            </if>
+            <if test="query.envelopeWkt != null and query.envelopeWkt != ''">
+                AND f.location_point IS NOT NULL
+                AND f.location_lat BETWEEN -90 AND 90
+                AND f.location_lng BETWEEN -180 AND 180
+                AND MBRContains(
+                    ST_GeomFromText(#{query.envelopeWkt}),
+                    f.location_point
+                )
+            </if>
+            <if test="query.radiusMeters != null and query.queryPointWkt != null and query.queryPointWkt != ''">
+                AND f.location_point IS NOT NULL
+                AND f.location_lat BETWEEN -90 AND 90
+                AND f.location_lng BETWEEN -180 AND 180
+                AND ST_Distance_Sphere(
+                    f.location_point,
+                    ST_GeomFromText(#{query.queryPointWkt})
+                ) <![CDATA[<=]]> #{query.radiusMeters}
+            </if>
+        </where>
+    </sql>
+
+    <sql id="FieldOrderBy">
+        <choose>
+            <when test="query.sortBy == 'distance' and query.latitude != null and query.longitude != null">
+                ORDER BY distance_meters
+                <choose>
+                    <when test="query.sortDirection == 'desc'">DESC</when>
+                    <otherwise>ASC</otherwise>
+                </choose>,
+                f.sort_order ASC,
+                f.updated_at DESC
+            </when>
+            <when test="query.sortBy == 'area'">
+                ORDER BY f.area_mu
+                <choose>
+                    <when test="query.sortDirection == 'asc'">ASC</when>
+                    <otherwise>DESC</otherwise>
+                </choose>,
+                f.sort_order ASC,
+                f.updated_at DESC
+            </when>
+            <otherwise>
+                ORDER BY f.sort_order ASC, f.updated_at DESC
+            </otherwise>
+        </choose>
+    </sql>
+
+    <select id="countPageByQuery" resultType="long">
+        SELECT COUNT(1)
+        FROM field f
+        <include refid="FieldQueryWhere"/>
+    </select>
+
+    <select id="selectPageByQuery" resultType="com.dahe.v2.modules.field.model.Field">
+        SELECT
+        <include refid="FieldBaseColumns"/>,
+        <choose>
+            <when test="query.queryPointWkt != null and query.queryPointWkt != ''">
+                CASE
+                    WHEN f.location_point IS NULL THEN NULL
+                    ELSE ST_Distance_Sphere(
+                        f.location_point,
+                        ST_GeomFromText(#{query.queryPointWkt})
+                    )
+                END AS distance_meters
+            </when>
+            <otherwise>
+                NULL AS distance_meters
+            </otherwise>
+        </choose>
+        FROM field f
+        <include refid="FieldQueryWhere"/>
+        <include refid="FieldOrderBy"/>
+        LIMIT #{query.offset}, #{query.pageSize}
+    </select>
+
+    <update id="refreshLocationPoint">
+        UPDATE field
+        SET location_point = CASE
+            WHEN location_lat IS NULL OR location_lng IS NULL THEN NULL
+            WHEN location_lat <![CDATA[<]]> -90 OR location_lat <![CDATA[>]]> 90 THEN NULL
+            WHEN location_lng <![CDATA[<]]> -180 OR location_lng <![CDATA[>]]> 180 THEN NULL
+            ELSE POINT(location_lng, location_lat)
+        END
+        WHERE id = #{id}
+    </update>
+</mapper>
