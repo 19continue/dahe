@@ -1,0 +1,29 @@
+{
+  "name": "大禾 V2",
+  "appid": "",
+  "description": "大禾农业管理小程序 V2",
+  "versionName": "2.0.0",
+  "versionCode": "200",
+  "transformPx": false,
+  "app-plus": {},
+  "quickapp": {},
+  "mp-weixin": {
+    "appid": "wxced669238dc601df",
+    "setting": {
+      "urlCheck": false,
+      "es6": true,
+      "minified": true,
+      "postcss": true
+    },
+    "permission": {
+      "scope.userLocation": {
+        "desc": "用于获取当前位置的天气与地址信息"
+      }
+    },
+    "requiredPrivateInfos": [
+      "getLocation"
+    ]
+  },
+  "vueVersion": "3",
+  "fallbackLocale": "zh-Hans"
+}

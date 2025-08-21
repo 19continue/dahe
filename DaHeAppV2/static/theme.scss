@@ -1,0 +1,531 @@
+:root {
+  --dh-font-family: "OPPO Sans", "HarmonyOS Sans SC", "MiSans", "Source Han Sans SC", "Noto Sans SC", "PingFang SC", "SF Pro Rounded", "SF Pro Text", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  --dh-app-tabbar-space: calc(160rpx + env(safe-area-inset-bottom));
+}
+
+page {
+  background: var(--dh-color-bg) !important;
+  height: 100%;
+  font-family: var(--dh-font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.page.page {
+  min-height: 100vh;
+  background: var(--dh-color-bg) !important;
+  color: var(--dh-color-text);
+  font-family: var(--dh-font-family);
+  letter-spacing: 0;
+  box-sizing: border-box;
+}
+
+.page.page {
+  box-sizing: border-box;
+}
+
+.page.page .dh-navbar {
+  --td-navbar-bg-color: var(--dh-color-brand);
+  --td-navbar-background: var(--dh-color-brand);
+  --td-navbar-color: #ffffff;
+  --td-navbar-capsule-border-color: rgba(255, 255, 255, 0.36);
+  z-index: 3600;
+}
+
+.page.page .navbar-right-action,
+.page.page .navbar-help {
+  color: #ffffff;
+  font-size: 26rpx;
+  font-weight: 600;
+  line-height: 1;
+  padding: 10rpx 12rpx;
+}
+
+.page.page .card,
+.page.page .status-card,
+.page.page .group,
+.page.page .profile-card,
+.page.page .field-card,
+.page.page .batch-card,
+.page.page .test-card,
+.page.page .form-item,
+.page.page .batch-info,
+.page.page .flow-track,
+.page.page .content-col,
+.page.page .loading-wrap,
+.page.page .step-card,
+.page.page .skeleton-card {
+  background: var(--dh-color-surface);
+  border: 1rpx solid var(--dh-color-border);
+  box-shadow: var(--dh-shadow-soft);
+}
+
+.page.page .search-input,
+.page.page .extra-input,
+.page.page .picker,
+.page.page .input,
+.page.page .textarea {
+  background: var(--dh-color-surface-soft);
+  border: 1rpx solid var(--dh-color-border);
+  color: var(--dh-color-text);
+}
+
+/* Avoid double borders on TDesign controls caused by broad native input rules. */
+.page.page .t-input__control,
+.page.page .t-textarea__wrapper-inner {
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.page.page .placeholder {
+  color: var(--dh-color-text-soft);
+}
+
+.page.page .label,
+.page.page .meta,
+.page.page .hint,
+.page.page .desc,
+.page.page .line,
+.page.page .line2,
+.page.page .line3,
+.page.page .row2,
+.page.page .row3,
+.page.page .row4,
+.page.page .flow-meta,
+.page.page .flow-tip,
+.page.page .status-text,
+.page.page .sub-tip,
+.page.page .version,
+.page.page .empty {
+  color: var(--dh-color-text-sub);
+}
+
+.page.page .section-title,
+.page.page .name,
+.page.page .code,
+.page.page .nickname,
+.page.page .type,
+.page.page .status-title,
+.page.page .flow-name,
+.page.page .field-name {
+  color: var(--dh-color-text);
+}
+
+.page.page .search-btn,
+.page.page .submit,
+.page.page .manage-btn,
+.page.page .submit-btn,
+.page.page .add-btn,
+.page.page .item .badge {
+  transition: transform 0.16s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.page.page .search-btn,
+.page.page .submit,
+.page.page .manage-btn,
+.page.page .submit-btn {
+  background: var(--dh-color-brand);
+  border-color: var(--dh-color-brand);
+  color: #ffffff;
+}
+
+.page.page .search-btn:active,
+.page.page .submit:active,
+.page.page .manage-btn:active,
+.page.page .submit-btn:active {
+  background: var(--dh-color-brand-press);
+  border-color: var(--dh-color-brand-press);
+  transform: translateY(1rpx);
+}
+
+.page.page .chip,
+.page.page .cycle-chip,
+.page.page .quick-chip,
+.page.page .identity-chip,
+.page.page .mini-btn,
+.page.page .clear-btn,
+.page.page .add-btn.light {
+  background: var(--dh-color-brand-light);
+  border-color: rgba(115, 174, 82, 0.24);
+  color: var(--dh-color-brand);
+}
+
+.page.page .chip.active,
+.page.page .cycle-chip.active,
+.page.page .identity-chip.active {
+  background: var(--dh-color-brand);
+  border-color: var(--dh-color-brand);
+  color: #ffffff;
+}
+
+.page.page .value,
+.page.page .section-sub,
+.page.page .section-more,
+.page.page .op,
+.page.page .field-tags .t-tag {
+  color: var(--dh-color-brand);
+}
+
+.page.page .status-on {
+  background: #e7f4ec;
+  color: var(--dh-color-brand);
+}
+
+.page.page .status-off {
+  background: #f3f5f7;
+  color: #6f7a71;
+}
+
+.page.page .day-tag,
+.page.page .process-summary {
+  background: var(--dh-color-surface-muted);
+  border-color: var(--dh-color-border);
+  color: var(--dh-color-text-sub);
+}
+
+.page.page .node {
+  background: var(--dh-color-brand);
+}
+
+.page.page .node-col::after,
+.page.page .connector {
+  background: #d9e4db;
+}
+
+.page.page .dot.done,
+.page.page .connector.done {
+  background: var(--dh-color-brand);
+}
+
+.page.page .badge,
+.page.page .logout-btn,
+.page.page .op.danger,
+.page.page .required {
+  color: #ffffff;
+}
+
+.page.page .logout-btn {
+  background: var(--dh-color-danger);
+}
+
+.page.page .item,
+.page.page .field-card,
+.page.page .batch-card,
+.page.page .test-card,
+.page.page .step-card,
+.page.page .flow-main {
+  transition: transform 0.16s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.page.page .item:active,
+.page.page .field-card:active,
+.page.page .batch-card:active,
+.page.page .test-card:active,
+.page.page .step-card:active,
+.page.page .flow-main:active {
+  transform: scale(0.996);
+}
+
+.page.page.record-style-page {
+  --dh-page-radius: 20rpx;
+  --dh-page-radius-lg: 24rpx;
+  --dh-page-control-height: 76rpx;
+  --dh-page-control-radius: 16rpx;
+  --dh-page-gap: 14rpx;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.page.page.record-style-page ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.page.page.record-style-page .content,
+.page.page.record-style-page .list,
+.page.page.record-style-page .form,
+.page.page.record-style-page .form-scroll,
+.page.page.record-style-page .toolbar,
+.page.page.record-style-page .filter,
+.page.page.record-style-page .filter-bar,
+.page.page.record-style-page .extra-filter,
+.page.page.record-style-page .section-header,
+.page.page.record-style-page .batch-info {
+  box-sizing: border-box;
+}
+
+.page.page.record-style-page .content::-webkit-scrollbar,
+.page.page.record-style-page .list::-webkit-scrollbar,
+.page.page.record-style-page .form-scroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.page.page.record-style-page .card,
+.page.page.record-style-page .group,
+.page.page.record-style-page .profile-card,
+.page.page.record-style-page .field-card,
+.page.page.record-style-page .batch-card,
+.page.page.record-style-page .test-card,
+.page.page.record-style-page .batch-info,
+.page.page.record-style-page .toolbar,
+.page.page.record-style-page .status-card,
+.page.page.record-style-page .faq-item,
+.page.page.record-style-page .guide-item,
+.page.page.record-style-page .cycle-item {
+  border-radius: var(--dh-page-radius);
+  border: 1rpx solid var(--dh-color-border);
+  background: var(--dh-color-surface);
+  box-shadow: none;
+}
+
+.page.page.record-style-page .group,
+.page.page.record-style-page .toolbar,
+.page.page.record-style-page .batch-info {
+  overflow: hidden;
+}
+
+.page.page.record-style-page .item,
+.page.page.record-style-page .guide-item {
+  min-height: 94rpx;
+  padding-left: 22rpx;
+  padding-right: 22rpx;
+}
+
+.page.page.record-style-page .faq-item,
+.page.page.record-style-page .cycle-item {
+  padding: 16rpx 18rpx;
+}
+
+.page.page.record-style-page .section-title,
+.page.page.record-style-page .group-title,
+.page.page.record-style-page .card-title,
+.page.page.record-style-page .status-title,
+.page.page.record-style-page .name,
+.page.page.record-style-page .nickname,
+.page.page.record-style-page .question,
+.page.page.record-style-page .type,
+.page.page.record-style-page .cycle-name {
+  font-weight: 600;
+  letter-spacing: 0.2rpx;
+}
+
+.page.page.record-style-page .desc,
+.page.page.record-style-page .hint,
+.page.page.record-style-page .sub,
+.page.page.record-style-page .answer,
+.page.page.record-style-page .content,
+.page.page.record-style-page .note,
+.page.page.record-style-page .meta,
+.page.page.record-style-page .line,
+.page.page.record-style-page .line2,
+.page.page.record-style-page .line3,
+.page.page.record-style-page .row2,
+.page.page.record-style-page .row3,
+.page.page.record-style-page .row4,
+.page.page.record-style-page .guide,
+.page.page.record-style-page .perm-tip,
+.page.page.record-style-page .version,
+.page.page.record-style-page .copyright {
+  line-height: 1.6;
+}
+
+.page.page.record-style-page .input,
+.page.page.record-style-page .picker,
+.page.page.record-style-page .selector,
+.page.page.record-style-page .search-input,
+.page.page.record-style-page .extra-input,
+.page.page.record-style-page .textarea {
+  min-height: var(--dh-page-control-height);
+  border-radius: var(--dh-page-control-radius);
+  border: 1rpx solid var(--dh-color-border);
+  background: var(--dh-color-surface-soft);
+  color: var(--dh-color-text);
+}
+
+.page.page.record-style-page .input,
+.page.page.record-style-page .search-input,
+.page.page.record-style-page .extra-input,
+.page.page.record-style-page .picker,
+.page.page.record-style-page .selector {
+  display: flex;
+  align-items: center;
+  padding-left: 18rpx;
+  padding-right: 18rpx;
+}
+
+.page.page.record-style-page .textarea {
+  min-height: 148rpx;
+  padding: 16rpx 18rpx;
+}
+
+.page.page.record-style-page .btn,
+.page.page.record-style-page .search-btn,
+.page.page.record-style-page .query-btn,
+.page.page.record-style-page .submit,
+.page.page.record-style-page .add-btn,
+.page.page.record-style-page .logout-btn,
+.page.page.record-style-page .mini-btn,
+.page.page.record-style-page .small,
+.page.page.record-style-page .edit-btn,
+.page.page.record-style-page .del-btn {
+  min-height: 72rpx;
+  line-height: 72rpx;
+  padding: 0 24rpx;
+  border-radius: 999rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  border: 1rpx solid transparent;
+  box-sizing: border-box;
+}
+
+.page.page.record-style-page .btn::after,
+.page.page.record-style-page .search-btn::after,
+.page.page.record-style-page .query-btn::after,
+.page.page.record-style-page .submit::after,
+.page.page.record-style-page .add-btn::after,
+.page.page.record-style-page .logout-btn::after,
+.page.page.record-style-page .mini-btn::after,
+.page.page.record-style-page .small::after,
+.page.page.record-style-page .edit-btn::after,
+.page.page.record-style-page .del-btn::after {
+  border: 0 !important;
+}
+
+.page.page.record-style-page .btn,
+.page.page.record-style-page .search-btn,
+.page.page.record-style-page .query-btn,
+.page.page.record-style-page .submit,
+.page.page.record-style-page .add-btn,
+.page.page.record-style-page .edit-btn,
+.page.page.record-style-page .approve,
+.page.page.record-style-page .console {
+  background: var(--dh-color-brand);
+  color: #ffffff;
+  border-color: var(--dh-color-brand);
+}
+
+.page.page.record-style-page .minor,
+.page.page.record-style-page .mini-btn,
+.page.page.record-style-page .add-btn.light,
+.page.page.record-style-page .quick-chip {
+  background: var(--dh-color-brand-light);
+  color: var(--dh-color-brand);
+  border-color: rgba(115, 174, 82, 0.24);
+}
+
+.page.page.record-style-page .reject,
+.page.page.record-style-page .danger,
+.page.page.record-style-page .del-btn,
+.page.page.record-style-page .logout-btn {
+  background: #fff2f0;
+  color: var(--dh-color-danger);
+  border-color: rgba(213, 73, 65, 0.2);
+}
+
+.page.page.record-style-page .chip,
+.page.page.record-style-page .identity-chip,
+.page.page.record-style-page .quick-chip,
+.page.page.record-style-page .tag,
+.page.page.record-style-page .perm,
+.page.page.record-style-page .badge,
+.page.page.record-style-page .conclusion,
+.page.page.record-style-page .dot {
+  border-radius: 999rpx;
+  font-weight: 600;
+}
+
+.page.page.record-style-page .hero,
+.page.page.record-style-page .cover-thumb,
+.page.page.record-style-page .cover-preview,
+.page.page.record-style-page .photo-img {
+  border-radius: var(--dh-page-radius);
+}
+
+.page.page.record-style-page.elder-mode .section-title,
+.page.page.record-style-page.elder-mode .group-title,
+.page.page.record-style-page.elder-mode .card-title,
+.page.page.record-style-page.elder-mode .status-title,
+.page.page.record-style-page.elder-mode .nickname,
+.page.page.record-style-page.elder-mode .name,
+.page.page.record-style-page.elder-mode .type,
+.page.page.record-style-page.elder-mode .question,
+.page.page.record-style-page.elder-mode .cycle-name {
+  font-size: 36rpx !important;
+}
+
+.page.page.record-style-page.elder-mode .desc,
+.page.page.record-style-page.elder-mode .hint,
+.page.page.record-style-page.elder-mode .sub,
+.page.page.record-style-page.elder-mode .answer,
+.page.page.record-style-page.elder-mode .content,
+.page.page.record-style-page.elder-mode .note,
+.page.page.record-style-page.elder-mode .meta,
+.page.page.record-style-page.elder-mode .line,
+.page.page.record-style-page.elder-mode .line2,
+.page.page.record-style-page.elder-mode .line3,
+.page.page.record-style-page.elder-mode .row2,
+.page.page.record-style-page.elder-mode .row3,
+.page.page.record-style-page.elder-mode .row4,
+.page.page.record-style-page.elder-mode .guide,
+.page.page.record-style-page.elder-mode .empty,
+.page.page.record-style-page.elder-mode .foot,
+.page.page.record-style-page.elder-mode .version,
+.page.page.record-style-page.elder-mode .label,
+.page.page.record-style-page.elder-mode .picker,
+.page.page.record-style-page.elder-mode .selector,
+.page.page.record-style-page.elder-mode .search-input,
+.page.page.record-style-page.elder-mode .extra-input,
+.page.page.record-style-page.elder-mode .input,
+.page.page.record-style-page.elder-mode .textarea {
+  font-size: 30rpx !important;
+}
+
+.page.page.record-style-page.elder-mode .input,
+.page.page.record-style-page.elder-mode .picker,
+.page.page.record-style-page.elder-mode .selector,
+.page.page.record-style-page.elder-mode .search-input,
+.page.page.record-style-page.elder-mode .extra-input,
+.page.page.record-style-page.elder-mode .textarea {
+  min-height: 88rpx;
+  border-radius: 20rpx;
+}
+
+.page.page.record-style-page.elder-mode .btn,
+.page.page.record-style-page.elder-mode .search-btn,
+.page.page.record-style-page.elder-mode .query-btn,
+.page.page.record-style-page.elder-mode .submit,
+.page.page.record-style-page.elder-mode .add-btn,
+.page.page.record-style-page.elder-mode .logout-btn,
+.page.page.record-style-page.elder-mode .mini-btn,
+.page.page.record-style-page.elder-mode .small,
+.page.page.record-style-page.elder-mode .edit-btn,
+.page.page.record-style-page.elder-mode .del-btn {
+  min-height: 84rpx;
+  line-height: 84rpx;
+  font-size: 30rpx !important;
+}
+
+.page.page.record-style-page.elder-mode .card,
+.page.page.record-style-page.elder-mode .group,
+.page.page.record-style-page.elder-mode .profile-card,
+.page.page.record-style-page.elder-mode .field-card,
+.page.page.record-style-page.elder-mode .batch-card,
+.page.page.record-style-page.elder-mode .test-card,
+.page.page.record-style-page.elder-mode .batch-info,
+.page.page.record-style-page.elder-mode .toolbar,
+.page.page.record-style-page.elder-mode .faq-item,
+.page.page.record-style-page.elder-mode .guide-item,
+.page.page.record-style-page.elder-mode .cycle-item {
+  border-radius: 22rpx;
+}
+
+.page.page.record-style-page.elder-mode .avatar-wrap,
+.page.page.record-style-page.elder-mode .avatar-img {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 64rpx;
+}
+

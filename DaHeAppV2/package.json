@@ -1,0 +1,23 @@
+{
+  "name": "daheappv2",
+  "version": "1.0.0",
+  "description": "DaHe V2 小程序（uni-app），在保持原有视觉风格的基础上，对功能与结构进行重设计。",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/19continue/DaHeAppV2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/19continue/DaHeAppV2/issues"
+  },
+  "homepage": "https://github.com/19continue/DaHeAppV2#readme",
+  "dependencies": {
+    "tdesign-uniapp": "^0.6.3"
+  }
+}

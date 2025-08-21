@@ -1,0 +1,128 @@
+:root,
+page,
+.page {
+  --dh-color-bg: #f5f6f7;
+  --dh-color-surface: #ffffff;
+  --dh-color-surface-soft: #f7f9f5;
+  --dh-color-surface-muted: #edf3e7;
+  --dh-color-border: #dfe7da;
+  --dh-color-text: #243022;
+  --dh-color-text-sub: #5e6a58;
+  --dh-color-text-soft: #8a9584;
+  --dh-color-brand: #73ae52;
+  --dh-color-brand-press: #5e9240;
+  --dh-color-brand-light: #edf7e7;
+  --dh-color-secondary: #fbf1d7;
+  --dh-color-danger: #d74b4b;
+  --dh-color-overlay: rgba(28, 39, 24, 0.52);
+  --dh-radius-sm: 12rpx;
+  --dh-radius-md: 16rpx;
+  --dh-radius-lg: 22rpx;
+  --dh-shadow-soft: 0 8rpx 24rpx rgba(16, 24, 18, 0.06);
+  --dh-shadow-brand: 0 10rpx 28rpx rgba(115, 174, 82, 0.24);
+
+  --td-brand-color: var(--dh-color-brand);
+  --td-brand-color-focus: #e8f3df;
+  --td-brand-color-active: var(--dh-color-brand-press);
+  --td-brand-color-disabled: #b7cba7;
+  --td-brand-color-light: var(--dh-color-brand-light);
+  --td-brand-color-light-active: #d7eac7;
+  --td-brand-color-1: #f3f9ef;
+  --td-brand-color-2: #e8f3df;
+  --td-brand-color-3: #d7eac7;
+  --td-brand-color-4: #c2ddaa;
+  --td-brand-color-5: #aad08c;
+  --td-brand-color-6: #8dbd6c;
+  --td-brand-color-7: #73ae52;
+  --td-brand-color-8: #5e9240;
+  --td-brand-color-9: #4a7431;
+  --td-brand-color-10: #365622;
+
+  --td-bg-color-page: var(--dh-color-bg);
+  --td-bg-color-container: var(--dh-color-surface);
+  --td-bg-color-secondarycontainer: var(--dh-color-surface-soft);
+  --td-bg-color-component: var(--dh-color-surface-soft);
+  --td-bg-color-component-disabled: #eef2e8;
+  --td-bg-color-specialcomponent: var(--dh-color-surface-muted);
+  --td-border-level-1-color: var(--dh-color-border);
+  --td-component-stroke: var(--dh-color-border);
+  --td-component-border: var(--dh-color-border);
+
+  --td-text-color-primary: var(--dh-color-text);
+  --td-text-color-secondary: var(--dh-color-text-sub);
+  --td-text-color-placeholder: var(--dh-color-text-soft);
+  --td-text-color-disabled: #9ba790;
+  --td-text-color-brand: var(--dh-color-brand);
+  --td-text-color-link: var(--dh-color-brand);
+
+  --td-success-color: #6b9f4f;
+  --td-warning-color: #b78333;
+  --td-error-color: var(--dh-color-danger);
+
+  --td-navbar-bg-color: var(--dh-color-brand);
+  --td-navbar-background: var(--dh-color-brand);
+  --td-navbar-color: #ffffff;
+  --td-navbar-title-font-size: 18px;
+  --td-navbar-title-font-weight: 600;
+  --td-navbar-capsule-border-color: rgba(255, 255, 255, 0.36);
+
+  --td-radius-default: var(--dh-radius-md);
+  --td-radius-large: var(--dh-radius-lg);
+
+  --td-button-primary-bg-color: var(--dh-color-brand);
+  --td-button-primary-border-color: var(--dh-color-brand);
+  --td-button-primary-active-bg-color: var(--dh-color-brand-press);
+  --td-button-primary-active-border-color: var(--dh-color-brand-press);
+  --td-button-primary-disabled-bg-color: #b7cba7;
+  --td-button-primary-disabled-bg: #b7cba7;
+  --td-button-primary-disabled-border-color: #b7cba7;
+  --td-button-default-bg-color: var(--dh-color-surface);
+  --td-button-default-border-color: var(--dh-color-border);
+  --td-button-default-color: var(--dh-color-text);
+  --td-button-default-disabled-bg-color: #f1f3eb;
+  --td-button-default-disabled-border-color: #e4e8db;
+  --td-button-default-disabled-color: var(--td-text-color-disabled);
+
+  --td-input-bg-color: var(--dh-color-surface-soft);
+  --td-input-border-color: var(--dh-color-border);
+  --td-input-text-color: var(--dh-color-text);
+  --td-input-placeholder-text-color: var(--dh-color-text-soft);
+  --td-input-horizontal-padding: 18rpx;
+  --td-input-vertical-padding: 12rpx;
+
+  --td-textarea-background-color: var(--dh-color-surface-soft);
+  --td-textarea-border-color: var(--dh-color-border);
+  --td-textarea-text-color: var(--dh-color-text);
+  --td-textarea-placeholder-color: var(--dh-color-text-soft);
+  --td-textarea-border-radius: var(--dh-radius-md);
+
+  --td-cell-bg-color: var(--dh-color-surface);
+  --td-cell-border-color: var(--dh-color-border);
+  --td-cell-title-color: var(--dh-color-text);
+  --td-cell-note-color: var(--dh-color-text-sub);
+}
+
+.t-cell,
+.t-input,
+.t-textarea,
+.t-tag,
+.t-button {
+  border-radius: var(--dh-radius-md);
+}
+
+.t-input,
+.t-textarea,
+.t-cell {
+  border: 1rpx solid var(--dh-color-border);
+  box-sizing: border-box;
+}
+
+.t-tag--light {
+  border-color: var(--dh-color-border);
+}
+
+.t-popup__content {
+  border-top-left-radius: 28rpx;
+  border-top-right-radius: 28rpx;
+  background: var(--dh-color-surface);
+}
