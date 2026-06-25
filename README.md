@@ -2,6 +2,42 @@
 
 DaHe V2 是一套面向农业生产管理的全栈项目，包含后台管理端、小程序端和后端服务。项目围绕田块分布、农事管理、种子质量等业务场景，提供管理配置、移动端采集与后端接口支撑。
 
+## 项目预览
+
+<p>
+  <img src="img/1.gif" alt="DaHe V2 项目预览 1" width="720">
+</p>
+<p>
+  <img src="img/2.gif" alt="DaHe V2 项目预览 2" width="720">
+</p>
+<p>
+  <img src="img/3.gif" alt="DaHe V2 项目预览 3" width="720">
+</p>
+<p>
+  <img src="img/4.gif" alt="DaHe V2 项目预览 4" width="720">
+</p>
+<p>
+  <img src="img/5.jpg" alt="DaHe V2 项目预览 5" width="720">
+</p>
+<p>
+  <img src="img/6.jpg" alt="DaHe V2 项目预览 6" width="720">
+</p>
+<p>
+  <img src="img/7.jpg" alt="DaHe V2 项目预览 7" width="720">
+</p>
+<p>
+  <img src="img/8.jpg" alt="DaHe V2 项目预览 8" width="720">
+</p>
+<p>
+  <img src="img/9.jpg" alt="DaHe V2 项目预览 9" width="720">
+</p>
+<p>
+  <img src="img/10.jpg" alt="DaHe V2 项目预览 10" width="720">
+</p>
+<p>
+  <img src="img/11.gif" alt="DaHe V2 项目预览 11" width="720">
+</p>
+
 ## 项目结构
 
 ```text
