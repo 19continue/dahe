@@ -57,7 +57,3 @@ npm install
 - `DaHeAdminV2/README.md`：后台管理端说明。
 - `DaHeAppV2/README.md`：小程序端说明。
 - `git.md`：本地提交与交付记录。
-
-## 注意事项
-
-项目中的数据库连接、Redis、微信小程序密钥、地图服务密钥等配置应通过环境变量提供，避免将真实密钥提交到仓库。
